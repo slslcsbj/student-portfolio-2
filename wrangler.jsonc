@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "student-portfolio-2",
+  "main": "./cloudflare/worker-entry.js",
+  "compatibility_date": "2026-08-28",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "vars": {
+    "AUTH_PLATFORM": "password"
+  },
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "migrations_dir": "./drizzle","database_id": "3548058c-cb7c-4011-bd28-2e20199b43cf","database_name": "student-portfolio-2-db"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "MEDIA_KV","id": "1d1b65ca3dbf49f79b901d353b66270d"
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.05
+    }
+  }
+}
